@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name = "DiffUtilSample"
+rootProject.name = "RecycleView"

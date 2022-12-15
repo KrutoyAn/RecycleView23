@@ -37,5 +37,6 @@ class WordAdapter : RecyclerView.Adapter<WordAdapter.WordViewHolder>() {
         val diffResults = DiffUtil.calculateDiff(diffUtil)
         wordList = newWordList
         diffResults.dispatchUpdatesTo(this)
+
     }
 }
