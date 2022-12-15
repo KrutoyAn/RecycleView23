@@ -41,6 +41,7 @@ class MainActivity : AppCompatActivity() {
         binding.buttonAdd.setOnClickListener{
             wordList.add()
             wordAdapter.notifyItemInserted(wordList.size -1)
+
         }
     }
 }
