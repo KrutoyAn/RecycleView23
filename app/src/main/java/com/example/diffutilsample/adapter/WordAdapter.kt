@@ -10,7 +10,7 @@ import com.example.diffutilsample.model.Word
 
 class WordAdapter : RecyclerView.Adapter<WordAdapter.WordViewHolder>() {
 
-    private var wordList = emptyList<Word>()
+    var wordList = emptyList<Word>()
 
     class WordViewHolder(val binding: RowItemBinding) :
         RecyclerView.ViewHolder(binding.root)
@@ -26,7 +26,13 @@ class WordAdapter : RecyclerView.Adapter<WordAdapter.WordViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: WordViewHolder, position: Int) {
+        val itemId = wordList[position].id
         holder.binding.textViewWord.text = wordList[position].word
+        holder.binding.imageSuuka.setOnClickListener {
+            if (wordList.isNotEmpty()) {
+                setData(wordList.toMutableList().filter { it.id != itemId })
+            }
+        }
     }
 
     override fun getItemCount(): Int {
@@ -36,8 +42,7 @@ class WordAdapter : RecyclerView.Adapter<WordAdapter.WordViewHolder>() {
     fun setData(newWordList: List<Word>) {
         val diffUtil = WordDiffUtil(wordList, newWordList)
         val diffResults = DiffUtil.calculateDiff(diffUtil)
-        wordList = newWordList
+        wordList = newWordList as ArrayList<Word>
         diffResults.dispatchUpdatesTo(this)
-
     }
 }
