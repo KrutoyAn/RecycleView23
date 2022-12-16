@@ -28,7 +28,7 @@ class WordAdapter : RecyclerView.Adapter<WordAdapter.WordViewHolder>() {
     override fun onBindViewHolder(holder: WordViewHolder, position: Int) {
         val itemId = wordList[position].id
         holder.binding.textViewWord.text = wordList[position].word
-        holder.binding.imageSuuka.setOnClickListener {
+        holder.binding.imageTrash.setOnClickListener {
             if (wordList.isNotEmpty()) {
                 setData(wordList.toMutableList().filter { it.id != itemId })
             }

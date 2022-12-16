@@ -12,10 +12,11 @@ const val LIST_KEY = "KEY_LIST"
 class MainActivity : AppCompatActivity() {
 
     private var newWordListList: MutableList<Word> = mutableListOf(
-        Word(1, "Mobiler.dev"),
-        Word(2, "Android"),
-        Word(3, "Kotlin"),
-        Word(4, "RecyclerView"),
+        Word(1, "Alfa-Bank"),
+        Word(2, "Campus"),
+        Word(3, "Android"),
+        Word(4, "Kotlin"),
+        Word(5, "RecyclerView"),
     )
     private var idCounter = newWordListList.size + 1
     private lateinit var binding: ActivityMainBinding

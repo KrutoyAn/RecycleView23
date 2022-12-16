@@ -28,11 +28,11 @@
                 android:text="@string/word"
                 android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="18sp"
+                android:textSize="22sp"
                 android:textStyle="bold" />
 
             <ImageView
-                android:id="@+id/imageSuuka"
+                android:id="@+id/imageTrash"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="16dp"
