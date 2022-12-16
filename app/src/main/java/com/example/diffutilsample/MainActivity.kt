@@ -35,6 +35,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+
     private fun setAdapter() {
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         binding.recyclerView.adapter = wordAdapter

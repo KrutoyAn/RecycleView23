@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.diffutilsample.databinding.RowItemBinding
 import com.example.diffutilsample.model.Word
 
+
 class WordAdapter : RecyclerView.Adapter<WordAdapter.WordViewHolder>() {
 
     private var wordList = emptyList<Word>()
