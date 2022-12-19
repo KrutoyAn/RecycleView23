@@ -2,4 +2,5 @@
     <string name="app_name">RecyclerView</string>
     <string name="add_new_words">ADD</string>
     <string name="word">Word</string>
+    <string name="start">START</string>
 </resources>

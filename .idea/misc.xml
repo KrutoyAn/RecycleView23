@@ -5,7 +5,11 @@
       <map>
         <entry key="..\:/Android_Projects/DiffUtilSampl/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Android_Projects/DiffUtilSampl/app/src/main/res/layout/row_item.xml" value="0.11574074074074074" />
-        <entry key="..\:/Android_Projects/RecycleView/app/src/main/res/layout/activity_main.xml" value="0.11302083333333333" />
+        <entry key="..\:/Android_Projects/RecycleView/app/src/main/res/drawable/circle.xml" value="0.1" />
+        <entry key="..\:/Android_Projects/RecycleView/app/src/main/res/drawable/ic_baseline_delete_24.xml" value="0.1" />
+        <entry key="..\:/Android_Projects/RecycleView/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="..\:/Android_Projects/RecycleView/app/src/main/res/drawable/round_button_blue.xml" value="0.15" />
+        <entry key="..\:/Android_Projects/RecycleView/app/src/main/res/layout/activity_main.xml" value="0.4" />
         <entry key="..\:/Android_Projects/RecycleView/app/src/main/res/layout/row_item.xml" value="0.1" />
       </map>
     </option>
