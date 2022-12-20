@@ -1,10 +1,15 @@
 package com.example.diffutilsample
 
 
+import android.animation.ObjectAnimator
+import android.animation.ValueAnimator
 import android.os.Bundle
+import android.view.View
+import android.view.animation.*
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.animation.doOnEnd
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.diffutilsample.adapter.WordAdapter
 import com.example.diffutilsample.databinding.ActivityMainBinding
@@ -32,9 +37,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+
         imgOne = binding.imgAnimation1
         imgTwo = binding.imgAnimation2
-        setContentView(binding.root)
+
         setAdapter()
 
         if (savedInstanceState == null) {
@@ -45,12 +53,30 @@ class MainActivity : AppCompatActivity() {
             wordAdapter.setData(list)
         }
 
+        val anim  = AnimationUtils.loadAnimation(this, R.anim.fade_out).apply {
+            interpolator = AnticipateOvershootInterpolator()
+
+        }
+
+        val animator = ObjectAnimator.ofFloat(binding.viewTwo,View.TRANSLATION_X, 0f, 10f).apply {
+            duration = 500
+            interpolator = AccelerateDecelerateInterpolator()
+
+        }
+        binding.viewOne.setOnClickListener{
+            it.startAnimation(anim)
+        }
+        binding.viewTwo.setOnClickListener{
+            animator.reverse()
+        }
+
         runnable = Runnable  {
             imgOne.animate().scaleX(4f).scaleY(4f).alpha(0f).setDuration(650)
                 .withEndAction {
                     imgOne.scaleX = 0.8f
                     imgOne.scaleY = 0.8f
                     imgOne.alpha = 0.8f
+
                 }
 
             imgTwo.animate().scaleX(4f).scaleY(4f).alpha(0f).setDuration(1000)
@@ -60,6 +86,7 @@ class MainActivity : AppCompatActivity() {
                     imgTwo.alpha = 0.8f
                 }
         }
+
     }
 
     private fun startPulse() {

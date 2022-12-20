@@ -14,8 +14,9 @@
         android:clipToPadding="false"
         android:paddingBottom="80dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:layout_editor_absoluteX="-97dp"
-        tools:layout_editor_absoluteY="16dp"
+        tools:itemCount="7"
+        tools:layout_editor_absoluteX="3dp"
+        tools:layout_editor_absoluteY="45dp"
         tools:listitem="@layout/row_item" />
 
     <ImageView
@@ -54,4 +55,38 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/viewOne"
+        style="@style/AppTheme.ButtonStyle"
+        android:layout_width="80dp"
+        android:layout_height="55dp"
+        android:layout_margin="20dp"
+        android:layout_marginBottom="20dp"
+        android:textSize="18sp"
+        android:background="@android:color/holo_orange_light"
+        android:padding="10dp"
+        android:text="@string/new_hide"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.848"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/viewTwo"
+        style="@style/AppTheme.ButtonStyle"
+        android:layout_width="80dp"
+        android:layout_height="55dp"
+        android:layout_margin="20dp"
+        android:layout_marginBottom="8dp"
+        android:background="@android:color/holo_red_light"
+        android:padding="10dp"
+        android:text="@string/blocked"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.157"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <!-- style="@style/AppTheme.ButtonStyleAnim"-->
 </androidx.constraintlayout.widget.ConstraintLayout>
