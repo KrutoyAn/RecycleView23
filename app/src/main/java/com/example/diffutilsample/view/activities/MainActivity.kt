@@ -1,21 +1,19 @@
-package com.example.diffutilsample
-
+package com.example.diffutilsample.view.activities
 
 import android.animation.ObjectAnimator
-import android.animation.ValueAnimator
 import android.os.Bundle
 import android.view.View
 import android.view.animation.*
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.animation.doOnEnd
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.diffutilsample.adapter.WordAdapter
+import com.example.diffutilsample.R
+import com.example.diffutilsample.view.adapter.WordAdapter
 import com.example.diffutilsample.databinding.ActivityMainBinding
 import com.example.diffutilsample.model.Word
+import com.example.diffutilsample.utils.DELAY_ANIM
+import com.example.diffutilsample.utils.LIST_KEY
 
-const val LIST_KEY = "KEY_LIST"
 
 class MainActivity : AppCompatActivity() {
 
@@ -39,7 +37,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         imgOne = binding.imgAnimation1
         imgTwo = binding.imgAnimation2
 
@@ -59,7 +56,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         val animator = ObjectAnimator.ofFloat(binding.viewTwo,View.TRANSLATION_X, 0f, 10f).apply {
-            duration = 500
+            duration = DELAY_ANIM.toLong()
             interpolator = AccelerateDecelerateInterpolator()
 
         }
@@ -99,7 +96,7 @@ class MainActivity : AppCompatActivity() {
         binding.recyclerView.adapter = wordAdapter
         binding.button.setOnClickListener {
             startPulse()
-            val item = Word(idCounter, "$idCounter элемент")
+            val item = Word(idCounter, "$idCounter Name Heroes")
             idCounter++
             val listToUpdate = wordAdapter.wordList.toMutableList()
                 .apply { add(item)
