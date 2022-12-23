@@ -9,11 +9,8 @@ import com.example.diffutilsample.model.Word
 
 
 class WordAdapter : RecyclerView.Adapter<WordAdapter.WordViewHolder>() {
-
-    var wordList = emptyList<Word>()
-
-    class WordViewHolder(val binding: RowItemBinding) :
-        RecyclerView.ViewHolder(binding.root)
+    //1
+    private var wordList = emptyList<Word>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordViewHolder {
         return WordViewHolder(
@@ -45,4 +42,8 @@ class WordAdapter : RecyclerView.Adapter<WordAdapter.WordViewHolder>() {
         wordList = newWordList as ArrayList<Word>
         diffResults.dispatchUpdatesTo(this)
     }
+
+    //2
+    class WordViewHolder(val binding: RowItemBinding) :
+        RecyclerView.ViewHolder(binding.root)
 }
