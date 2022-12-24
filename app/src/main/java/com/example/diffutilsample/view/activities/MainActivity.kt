@@ -3,16 +3,18 @@ package com.example.diffutilsample.view.activities
 import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.View
-import android.view.animation.*
+import android.view.animation.AccelerateDecelerateInterpolator
+import android.view.animation.AnimationUtils
+import android.view.animation.AnticipateOvershootInterpolator
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.diffutilsample.R
-import com.example.diffutilsample.view.adapter.WordAdapter
 import com.example.diffutilsample.databinding.ActivityMainBinding
 import com.example.diffutilsample.model.Word
 import com.example.diffutilsample.utils.DELAY_ANIM
 import com.example.diffutilsample.utils.LIST_KEY
+import com.example.diffutilsample.view.adapter.WordAdapter
 
 
 class MainActivity : AppCompatActivity() {
@@ -24,12 +26,13 @@ class MainActivity : AppCompatActivity() {
         Word(4, "Kotlin"),
         Word(5, "RecyclerView"),
     )
+
     private var idCounter = newWordListList.size + 1
-    private lateinit var imgOne : ImageView
-    private lateinit var imgTwo : ImageView
+    private lateinit var imgOne: ImageView
+    private lateinit var imgTwo: ImageView
     private lateinit var binding: ActivityMainBinding
     private val wordAdapter by lazy { WordAdapter() }
-    private lateinit var  runnable : Runnable
+    private lateinit var runnable: Runnable
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,24 +53,24 @@ class MainActivity : AppCompatActivity() {
             wordAdapter.setData(list)
         }
 
-        val anim  = AnimationUtils.loadAnimation(this, R.anim.fade_out).apply {
+        val anim = AnimationUtils.loadAnimation(this, R.anim.fade_out).apply {
             interpolator = AnticipateOvershootInterpolator()
 
         }
 
-        val animator = ObjectAnimator.ofFloat(binding.viewTwo,View.TRANSLATION_X, 0f, 10f).apply {
+        val animator = ObjectAnimator.ofFloat(binding.viewTwo, View.TRANSLATION_X, 0f, 10f).apply {
             duration = DELAY_ANIM.toLong()
             interpolator = AccelerateDecelerateInterpolator()
 
         }
-        binding.viewOne.setOnClickListener{
+        binding.viewOne.setOnClickListener {
             it.startAnimation(anim)
         }
-        binding.viewTwo.setOnClickListener{
+        binding.viewTwo.setOnClickListener {
             animator.reverse()
         }
 
-        runnable = Runnable  {
+        runnable = Runnable {
             imgOne.animate().scaleX(4f).scaleY(4f).alpha(0f).setDuration(650)
                 .withEndAction {
                     imgOne.scaleX = 0.8f
@@ -83,7 +86,6 @@ class MainActivity : AppCompatActivity() {
                     imgTwo.alpha = 0.8f
                 }
         }
-
     }
 
     private fun startPulse() {
@@ -99,12 +101,15 @@ class MainActivity : AppCompatActivity() {
             val item = Word(idCounter, "$idCounter Name Heroes")
             idCounter++
             val listToUpdate = wordAdapter.wordList.toMutableList()
-                .apply { add(item)
+                .apply {
+                    add(item)
                 }
 
             wordAdapter.setData(listToUpdate)
         }
-
+        wordAdapter.trashAction = { trashId ->
+            wordAdapter.setData(wordAdapter.wordList.filter { it.id != trashId })
+        }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

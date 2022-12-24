@@ -9,8 +9,11 @@ import com.example.diffutilsample.model.Word
 
 
 class WordAdapter : RecyclerView.Adapter<WordAdapter.WordViewHolder>() {
-    //1
-    private var wordList = emptyList<Word>()
+
+    var trashAction: (id: Int) -> Unit = {}
+
+    var wordList = emptyList<Word>()
+        private set
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordViewHolder {
         return WordViewHolder(
@@ -23,13 +26,8 @@ class WordAdapter : RecyclerView.Adapter<WordAdapter.WordViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: WordViewHolder, position: Int) {
-        val itemId = wordList[position].id
-        holder.binding.textViewWord.text = wordList[position].word
-        holder.binding.imageTrash.setOnClickListener {
-            if (wordList.isNotEmpty()) {
-                setData(wordList.toMutableList().filter { it.id != itemId })
-            }
-        }
+        val item = wordList[position]
+        holder.bind(item, trashAction)
     }
 
     override fun getItemCount(): Int {
@@ -39,11 +37,18 @@ class WordAdapter : RecyclerView.Adapter<WordAdapter.WordViewHolder>() {
     fun setData(newWordList: List<Word>) {
         val diffUtil = WordDiffUtil(wordList, newWordList)
         val diffResults = DiffUtil.calculateDiff(diffUtil)
-        wordList = newWordList as ArrayList<Word>
+        wordList = newWordList
         diffResults.dispatchUpdatesTo(this)
     }
 
-    //2
-    class WordViewHolder(val binding: RowItemBinding) :
-        RecyclerView.ViewHolder(binding.root)
+
+    class WordViewHolder(private val binding: RowItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(item: Word, trashAction: (id: Int) -> Unit) {
+            val itemId = item.id
+            binding.textViewWord.text = item.word
+            binding.imageTrash.setOnClickListener { trashAction.invoke(itemId) }
+        }
+    }
 }
