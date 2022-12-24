@@ -9,7 +9,6 @@ import com.example.diffutilsample.model.Word
 
 
 class WordAdapter : RecyclerView.Adapter<WordAdapter.WordViewHolder>() {
-
     var trashAction: (id: Int) -> Unit = {}
 
     var wordList = emptyList<Word>()
@@ -44,7 +43,6 @@ class WordAdapter : RecyclerView.Adapter<WordAdapter.WordViewHolder>() {
 
     class WordViewHolder(private val binding: RowItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-
         fun bind(item: Word, trashAction: (id: Int) -> Unit) {
             val itemId = item.id
             binding.textViewWord.text = item.word
