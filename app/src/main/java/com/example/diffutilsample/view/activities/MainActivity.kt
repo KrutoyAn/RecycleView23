@@ -34,7 +34,6 @@ class MainActivity : AppCompatActivity() {
     private val wordAdapter by lazy { WordAdapter() }
     private lateinit var runnable: Runnable
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -62,6 +61,7 @@ class MainActivity : AppCompatActivity() {
             interpolator = AccelerateDecelerateInterpolator()
 
         }
+
         binding.viewOne.setOnClickListener {
             it.startAnimation(anim)
         }

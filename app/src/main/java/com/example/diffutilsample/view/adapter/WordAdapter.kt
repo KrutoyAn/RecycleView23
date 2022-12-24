@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.diffutilsample.databinding.RowItemBinding
 import com.example.diffutilsample.model.Word
 
-
 class WordAdapter : RecyclerView.Adapter<WordAdapter.WordViewHolder>() {
     var trashAction: (id: Int) -> Unit = {}
 
@@ -39,7 +38,6 @@ class WordAdapter : RecyclerView.Adapter<WordAdapter.WordViewHolder>() {
         wordList = newWordList
         diffResults.dispatchUpdatesTo(this)
     }
-
 
     class WordViewHolder(private val binding: RowItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
