@@ -8,6 +8,7 @@ import android.view.animation.AnimationUtils
 import android.view.animation.AnticipateOvershootInterpolator
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.diffutilsample.R
 import com.example.diffutilsample.databinding.ActivityMainBinding
@@ -15,7 +16,6 @@ import com.example.diffutilsample.model.Word
 import com.example.diffutilsample.utils.DELAY_ANIM
 import com.example.diffutilsample.utils.LIST_KEY
 import com.example.diffutilsample.view.adapter.WordAdapter
-
 
 class MainActivity : AppCompatActivity() {
 
@@ -33,6 +33,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val wordAdapter by lazy { WordAdapter() }
     private lateinit var runnable: Runnable
+    private lateinit var vm : MainViewModel
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +42,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         imgOne = binding.imgAnimation1
         imgTwo = binding.imgAnimation2
+
+        vm = ViewModelProvider(this).get(MainViewModel::class.java)
 
         setAdapter()
 
@@ -69,6 +73,7 @@ class MainActivity : AppCompatActivity() {
             animator.reverse()
         }
 
+
         runnable = Runnable {
             imgOne.animate().scaleX(4f).scaleY(4f).alpha(0f).setDuration(650)
                 .withEndAction {
@@ -82,7 +87,7 @@ class MainActivity : AppCompatActivity() {
                 .withEndAction {
                     imgTwo.scaleX = 0.8f
                     imgTwo.scaleY = 0.8f
-                    imgTwo.alpha = 0.8f
+                   imgTwo.alpha = 0.8f
                 }
         }
     }
@@ -92,7 +97,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setAdapter() {
-
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         binding.recyclerView.adapter = wordAdapter
         binding.button.setOnClickListener {
