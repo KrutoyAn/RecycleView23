@@ -5,7 +5,6 @@ import com.example.diffutilsample.data.ThumbNailDto
 import com.example.diffutilsample.data.getImageUrl
 import com.example.diffutilsample.dataview.DataViewModel
 
-
 data class HeroInfoDto(
     val name: String,
     val description: String,

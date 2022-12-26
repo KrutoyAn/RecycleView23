@@ -32,6 +32,7 @@ class WordAdapter : RecyclerView.Adapter<WordAdapter.WordViewHolder>() {
         return wordList.size
     }
 
+
     fun setData(newWordList: List<Word>) {
         val diffUtil = WordDiffUtil(wordList, newWordList)
         val diffResults = DiffUtil.calculateDiff(diffUtil)

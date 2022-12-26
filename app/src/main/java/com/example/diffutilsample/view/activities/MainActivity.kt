@@ -73,7 +73,6 @@ class MainActivity : AppCompatActivity() {
             animator.reverse()
         }
 
-
         runnable = Runnable {
             imgOne.animate().scaleX(4f).scaleY(4f).alpha(0f).setDuration(650)
                 .withEndAction {
